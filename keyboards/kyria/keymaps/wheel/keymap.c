@@ -474,7 +474,7 @@ static void render_wpm(void)
 {
     if (timer_elapsed(wpm_timer) >= WPM_TIMEOUT)
     {
-        sprintf(wpm, "\nWPM: %03d", get_current_wpm());
+        sprintf(wpm, "WPM: %03d\n", get_current_wpm());
         
         wpm_timer = timer_read();
     }
