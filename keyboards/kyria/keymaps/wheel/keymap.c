@@ -23,7 +23,7 @@
 // #define ENTRSE LT(RAISE, KC_ENT)
 #define ENTNAV LT(NAV, KC_ENT)
 // #define SPCLWR LT(LOWER, KC_SPC)
-// #define SPCRSE LT(RAISE, KC_SPC)
+ #define SPCRSE LT(RAISE, KC_SPC)
 // #define SPCNAV LT(NAV, KC_SPC)
 // #define TABRSE LT(RAISE, KC_TAB)
 
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * | Ctrl   |   A  |   S  |  D   |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  | CZCY | CCCV |  |Leader| RGUI |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      | CCCV |  |Leader| RGUI |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+      |  |------+------+------+------+------+----------------------'
  *                        |  DEL | Tab  |      | Bspc | Enter|  | Bspc | Space|      | Tab  |  DEL |
  *                        |      | ALT  | LOWER|      | NAV  |  | NAV  |      | RAISE| ALT  |      |
@@ -78,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [QWERTY] = LAYOUT(
       KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
       CTRLESC, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, _______, KC_CVZY,     KC_LEAD, KC_RGUI, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                       KC_DEL,TABLALT,MO(LOWER), KC_BSPC, ENTNAV,          BSPCNAV, KC_SPC,MO(RAISE), TABRALT, KC_DEL
+      KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_DEL, KC_CVZY,     KC_LEAD, KC_DEL,   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                       KC_LGUI,TABLALT,MO(LOWER), KC_BSPC, ENTNAV,        BSPCNAV, KC_SPC, MO(RAISE), TABRALT, KC_RGUI
     ),
 /*
  * Lower Layer: Numpad, Media
@@ -258,19 +258,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 
     return true;
 }
-
-// per key tapping term if TAPPING_TERM_PER_KEY is enabled
-// commenting out to saved space since its not in use right now
-// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case SFT_T(KC_SPC):
-//             return TAPPING_TERM + 1250;
-//         case SPCNAV:
-//             return 500;
-//         default:
-//             return TAPPING_TERM;
-//     }
-// }
 
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
